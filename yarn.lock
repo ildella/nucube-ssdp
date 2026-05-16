@@ -33,6 +33,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ildella/nucube-ssdp@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@ildella/nucube-ssdp@workspace:."
+  dependencies:
+    exstream.js: "npm:0.25.0"
+    fast-xml-parser: "npm:5.8.0"
+    uuid: "npm:14.0.0"
+    vitest: "npm:4.1.6"
+  languageName: unknown
+  linkType: soft
+
 "@isaacs/fs-minipass@npm:^4.0.0":
   version: 4.0.1
   resolution: "@isaacs/fs-minipass@npm:4.0.1"
@@ -653,17 +664,6 @@ __metadata:
   checksum: 10c0/1822eb6f9b020ef6f7a7516d7b64a8036e09666ea55ac40416c36e4b2b343122c3cff0e2f085675f53de1d2db99a2a89a60ccea1d120bcd6a5347bf6ceb4a7fd
   languageName: node
   linkType: hard
-
-"nucube-ssdp@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "nucube-ssdp@workspace:."
-  dependencies:
-    exstream.js: "npm:0.25.0"
-    fast-xml-parser: "npm:5.8.0"
-    uuid: "npm:14.0.0"
-    vitest: "npm:4.1.6"
-  languageName: unknown
-  linkType: soft
 
 "obug@npm:^2.1.1":
   version: 2.1.1

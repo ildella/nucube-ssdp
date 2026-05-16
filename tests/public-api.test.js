@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNodejsSSDP} from 'nucube-ssdp/node'
-import {scan, fetchServicesDetails} from 'nucube-ssdp/discovery'
-import {run} from 'nucube-ssdp/import'
+import {createNodejsSSDP} from '@ildella/nucube-ssdp/node'
+import {scan, fetchServicesDetails} from '@ildella/nucube-ssdp/discovery'
+import {run} from '@ildella/nucube-ssdp/import'
 import {parseSSDPOriginal} from '../src/ssdp-parsers.js'
 
 test('public api imports', () => {
