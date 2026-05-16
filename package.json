@@ -20,6 +20,7 @@
     "./import": "./src/import.js"
   },
   "scripts": {
+    "lint": "eslint . --max-warnings 0",
     "test": "vitest --run"
   },
   "dependencies": {
@@ -28,6 +29,8 @@
     "uuid": "14.0.0"
   },
   "devDependencies": {
+    "eslint": "10.4.0",
+    "eslint-nostandard": "0.6.0",
     "vitest": "4.1.6"
   }
 }
