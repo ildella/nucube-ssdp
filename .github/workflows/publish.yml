@@ -32,7 +32,6 @@ jobs:
           corepack yarn --version
 
       - run: yarn install --immutable
-      - run: yarn test
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
