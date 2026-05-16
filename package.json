@@ -1,0 +1,24 @@
+{
+  "name": "nucube-ssdp",
+  "version": "0.0.0-local",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@4.14.1",
+  "exports": {
+    ".": "./src/index.js",
+    "./node": "./src/node.js",
+    "./discovery": "./src/discovery.js",
+    "./import": "./src/import.js"
+  },
+  "scripts": {
+    "test": "vitest --run"
+  },
+  "dependencies": {
+    "exstream.js": "0.25.0",
+    "fast-xml-parser": "5.8.0",
+    "uuid": "14.0.0"
+  },
+  "devDependencies": {
+    "vitest": "4.1.6"
+  }
+}
