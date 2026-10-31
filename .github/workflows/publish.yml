@@ -19,17 +19,14 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: 24
           registry-url: "https://npm.pkg.github.com"
           scope: "@ildella"
 
-      - name: Enable Corepack
-        shell: bash
+      - name: Install Yarn Switch
         run: |
-          node --version
-          corepack --version
-          corepack enable
-          corepack yarn --version
+          curl -fsSL https://repo.yarnpkg.com/install | bash
+          echo "$HOME/.yarn/switch/bin" >> "$GITHUB_PATH"
 
       - run: yarn install --immutable
       - run: npm publish

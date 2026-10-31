@@ -1,4 +1,4 @@
-import {expect, test, vi} from 'vitest'
+import {expect, test} from 'vitest'
 import {scan, fetchServicesDetails} from '@ildella/nucube-ssdp/discovery'
 
 const MediaServer = 'urn:schemas-upnp-org:device:MediaServer:1'
@@ -10,8 +10,6 @@ const Time = 'urn:av-openhome-org:service:Time:1'
 const Volume = 'urn:av-openhome-org:service:Volume:1'
 const Playlist = 'urn:av-openhome-org:service:Playlist:1'
 
-vi.setConfig({testTimeout: 5_000})
-
 test('SSDP scan basic', async () => {
   const {stream, stop} = scan()
   const check = stream
@@ -22,7 +20,7 @@ test('SSDP scan basic', async () => {
   expect(response).toBeDefined()
 })
 
-test.sequential('SSDP scan for ContentDirectory', async () => {
+test('SSDP scan for ContentDirectory', async () => {
   const {stream, stop} = await scan()
   const check = stream
     .where({st: ContentDirectory})
@@ -50,7 +48,7 @@ test.sequential('SSDP scan for ContentDirectory', async () => {
   })
 })
 
-test.sequential('SSDP scan OpenHome', async () => {
+test('SSDP scan OpenHome', async () => {
   const {stream, stop} = scan()
   const check = stream
     .where({st: OpenHome})
@@ -78,7 +76,7 @@ test.sequential('SSDP scan OpenHome', async () => {
   })
 })
 
-test.sequential('SSDP full standard scan', async () => {
+test('SSDP full standard scan', async () => {
   const {stream, stop} = scan()
   const check = stream
     .where({st: MediaRenderer})

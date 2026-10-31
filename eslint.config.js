@@ -1,25 +1,25 @@
 import {nostandard} from 'eslint-nostandard'
+import vitest from 'eslint-nostandard/vitest'
+import globals from 'globals'
 
 export default [
   ...nostandard.recommended,
+  vitest,
   {
     files: ['**/*.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
-        Buffer: 'readonly',
-        console: 'readonly',
-        fetch: 'readonly',
-        setTimeout: 'readonly',
-        clearTimeout: 'readonly',
+        ...globals.node,
       },
     },
     rules: {
       'camelcase': 'off',
       'complexity': 'off',
       'prefer-template': 'off',
-      '@stylistic/js/max-len': ['warn', {code: 140}],
+      'max-params': ['warn', {max: 4}],
+      '@stylistic/max-len': ['warn', {code: 140}],
     },
   },
 ]

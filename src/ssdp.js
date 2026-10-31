@@ -2,7 +2,7 @@ import {v4 as uuidv4} from 'uuid'
 import messages from './messages.js'
 import {parseSSDPOriginal} from './ssdp-parsers.js'
 
-// eslint-disable-next-line max-lines-per-function
+// eslint-disable-next-line nostandard/max-destructured-properties
 export const createSSDP = ({dgram, events}, {
   host,
   port,
@@ -10,6 +10,7 @@ export const createSSDP = ({dgram, events}, {
   product,
   product_version,
   device_name,
+// eslint-disable-next-line max-lines-per-function
 }) => {
   const socket = dgram.createSocket({type: 'udp4', reuseAddr: true})
   const uniSocket = dgram.createSocket({type: 'udp4', reuseAddr: true})
@@ -61,18 +62,13 @@ export const createSSDP = ({dgram, events}, {
     )
   }
 
+  // eslint-disable-next-line max-lines-per-function
   const start = () => {
-    // Wait for the socket to be able to receive data
     socket.on('listening', () => {
-      // Well-known multicast address for SSDP
       socket.addMembership(messages.config.MULTICAST_ADDRESS)
-
-      // Three alive messages for the root device
       advertise('upnp:rootdevice')
       advertise(deviceUUID)
       advertise('urn:schemas-upnp-org:device:' + deviceName + ':1')
-
-      // One alive message for each service
       services.forEach(service => {
         advertise(service)
       })
@@ -80,17 +76,12 @@ export const createSSDP = ({dgram, events}, {
 
     socket.on('message', (message, rinfo) => {
       const m = message.toString()
-      // const ssdp = parseSSDP(message, rinfo)
       const ssdp = parseSSDPOriginal(message, rinfo)
       if (m.includes('M-SEARCH')) {
-        // Advertise the service
         if (ssdp.st === 'ssdp:all') {
-          // Three response messages for the root device
           response('upnp:rootdevice', ssdp.address, ssdp.port)
           response(deviceUUID, ssdp.address, ssdp.port)
           response('urn:schemas-upnp-org:device:' + deviceName + ':1', ssdp.address, ssdp.port)
-
-          // One response message for each service
           services.forEach(service => {
             response(service, ssdp.address, ssdp.port)
           })
@@ -127,7 +118,7 @@ export const createSSDP = ({dgram, events}, {
           messages.config.MULTICAST_PORT,
           messages.config.MULTICAST_ADDRESS,
           () => {
-            resolve() // Resolve regardless of error
+            resolve()
           }
         )
       }))

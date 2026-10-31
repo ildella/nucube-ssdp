@@ -11,20 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
-          node-version: '22.x'
+          node-version: 24
 
-      - name: Enable Corepack
-        shell: bash
+      - name: Install Yarn Switch
         run: |
-          node --version
-          corepack --version
-          corepack enable
-          corepack yarn --version
+          curl -fsSL https://repo.yarnpkg.com/install | bash
+          echo "$HOME/.yarn/switch/bin" >> "$GITHUB_PATH"
 
       - name: Install dependencies
         run: yarn install --immutable

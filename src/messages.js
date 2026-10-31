@@ -36,12 +36,12 @@ const config = {
  */
 function msearch (st, host = config.MULTICAST_ADDRESS, port = config.MULTICAST_PORT) {
   const msearch =
-        'M-SEARCH * HTTP/1.1\r\n' +
-        'HOST: ' + host + ':' + port + '\r\n' +
-        'MAN: "ssdp:discover"\r\n' +
-        'MX: 3\r\n' +
-        'ST: ' + st + '\r\n' +
-        '\r\n'
+    'M-SEARCH * HTTP/1.1\r\n' +
+    'HOST: ' + host + ':' + port + '\r\n' +
+    'MAN: "ssdp:discover"\r\n' +
+    'MX: 3\r\n' +
+    'ST: ' + st + '\r\n' +
+    '\r\n'
 
   return msearch
 }
@@ -59,15 +59,15 @@ function response (location, usn, product, product_version) {
   const st = usn.substring(delim + 1).trim()
 
   const response =
-        'HTTP/1.1 200 OK\r\n' +
-        'CACHE-CONTROL: max-age = 1800\r\n' +
-        'DATE: ' + new Date() + '\r\n' +
-        'EXT:\r\n' +
-        'LOCATION: http://' + location + '\r\n' +
-        'SERVER: Node.js/16.2.0 UPnP/1.1 ' + product + '/' + product_version + '\r\n' +
-        'ST: ' + st + '\r\n' +
-        'USN: ' + usn + '\r\n' +
-        '\r\n'
+    'HTTP/1.1 200 OK\r\n' +
+    'CACHE-CONTROL: max-age = 1800\r\n' +
+    'DATE: ' + new Date() + '\r\n' +
+    'EXT:\r\n' +
+    'LOCATION: http://' + location + '\r\n' +
+    'SERVER: Node.js/16.2.0 UPnP/1.1 ' + product + '/' + product_version + '\r\n' +
+    'ST: ' + st + '\r\n' +
+    'USN: ' + usn + '\r\n' +
+    '\r\n'
 
   return response
 }
@@ -85,15 +85,15 @@ function notify_alive (location, usn, product, product_version) {
   const nt = usn.substring(delim + 1).trim()
 
   const notify_alive =
-        'NOTIFY * HTTP/1.1\r\n' +
-        'HOST: ' + config.MULTICAST_ADDRESS + ':' + config.MULTICAST_PORT + '\r\n' +
-        'CACHE-CONTROL: max-age = 1800\r\n' +
-        'LOCATION: http://' + location + '\r\n' +
-        'NT: ' + nt + '\r\n' +
-        'NTS: ssdp:alive\r\n' +
-        'SERVER: Node.js/16.2.0 UPnP/1.1 ' + product + '/' + product_version + '\r\n' +
-        'USN: ' + usn + '\r\n' +
-        '\r\n'
+    'NOTIFY * HTTP/1.1\r\n' +
+    'HOST: ' + config.MULTICAST_ADDRESS + ':' + config.MULTICAST_PORT + '\r\n' +
+    'CACHE-CONTROL: max-age = 1800\r\n' +
+    'LOCATION: http://' + location + '\r\n' +
+    'NT: ' + nt + '\r\n' +
+    'NTS: ssdp:alive\r\n' +
+    'SERVER: Node.js/16.2.0 UPnP/1.1 ' + product + '/' + product_version + '\r\n' +
+    'USN: ' + usn + '\r\n' +
+    '\r\n'
 
   return notify_alive
 }
@@ -105,12 +105,12 @@ function notify_alive (location, usn, product, product_version) {
  */
 function notify_bye (usn) {
   const notify_bye =
-        'NOTIFY * HTTP/1.1\r\n' +
-        'HOST: ' + config.MULTICAST_ADDRESS + ':' + config.MULTICAST_PORT + '\r\n' +
-        'NT: urn:schemas-upnp-org:service:DiscoveryService:1\r\n' +
-        'NTS: ssdp:byebye\r\n' +
-        'USN: ' + usn + '\r\n' +
-        '\r\n'
+    'NOTIFY * HTTP/1.1\r\n' +
+    'HOST: ' + config.MULTICAST_ADDRESS + ':' + config.MULTICAST_PORT + '\r\n' +
+    'NT: urn:schemas-upnp-org:service:DiscoveryService:1\r\n' +
+    'NTS: ssdp:byebye\r\n' +
+    'USN: ' + usn + '\r\n' +
+    '\r\n'
 
   return notify_bye
 }
